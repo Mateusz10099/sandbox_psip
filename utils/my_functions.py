@@ -1,3 +1,14 @@
+
+def update_user(users_list: list [dict,dict]) -> None:
+ nick_of_user = input("Prosze o podanie pseudnimu użytkownika którego chcesz zmodyfikować ")
+ print(nick_of_user)
+ for user in users_list:
+    if user['nick'] == nick_of_user:
+     print("FOUND")
+     user['name'] = input('Podaj nowe imie: ')
+     user['nick'] = input('Podaj nowy pseudonim: ')
+     user['posts'] = int(input('Podaj liczbe postow: '))
+
 def add_user_to(users_list: list) -> None:
     """
     add object to list
@@ -61,4 +72,4 @@ def gui(users_list: list)-> None:
                 remove_user_from(users_list)
             case'4':
                 print('Modyfikuję użytkownika')
-                print('to będzie zrobione') # TODO add this function to my_functions
+                update_user(users_list)
