@@ -1,11 +1,9 @@
-# GEO INFORMATYKA RZĄDZI 
+# GEOINFORMATYKA RZĄDZI 
 ## O YEEAAAAAAAAH!
 
 # CRUD
-Create
-Read
-Update
-Delet
-
-
+* Create
+* Read
+* Update
+* Delete
 # FACEBOOK
