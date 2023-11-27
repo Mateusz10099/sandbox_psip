@@ -3,6 +3,7 @@
 from bs4 import BeautifulSoup
 import requests
 import re
+import folium
 
 #-*- coding: utf-8 -*- TO JEST KOD NA ZAMIANĘ ZNAKÓW POLSKICH
 
@@ -24,6 +25,25 @@ def get_coordinates_of(city:str)->list[float,float]:
 
     return [response_html_latitude, response_html_longitude]
 
-for item in nazwy_miejscowosci:
-    print(get_coordinates_of(item))
+#for item in nazwy_miejscowosci:
+#    print(get_coordinates_of(item))
 
+# zwrócić mapę z pinezką odnoszącą się do wskazanego na podstawie nazwy użytkownika podanej z klawiatury
+
+# zwróci mapę z wszystkimi użytkownikami z danej listy (znajomymi)
+
+### RYSOWANIE MAPY
+
+city= get_coordinates_of(city='Zamość')
+map = folium.Map(
+    location=city,
+    tiles="OpenStreetMap",
+    zoom_start=14,
+    )
+
+for item in nazwy_miejscowosci:
+    folium.Marker(
+        location=get_coordinates_of(city=item),
+        popup='GEOINFORMATYKA RZĄDZI OU YEEEEEEAAAAH'
+    ).add_to(map)
+map.save('mapka.html')
