@@ -28,22 +28,37 @@ def get_coordinates_of(city:str)->list[float,float]:
 #for item in nazwy_miejscowosci:
 #    print(get_coordinates_of(item))
 
+user =  {"city":'Hrubieszów',"name": "Agata", "nick": "AAA","posts":1_0_000}
 # zwrócić mapę z pinezką odnoszącą się do wskazanego na podstawie nazwy użytkownika podanej z klawiatury
+def get_map_of(user:str)->None:
+    city=get_coordinates_of(user['city'])
+    map = folium.Map(
+        location=city,
+        tiles="OpenStreetMap",
+        zoom_start=14,
+    )
+    folium.Marker(
+        location=city,
+        popup=f'TU RZĄDZI {user["name"]},'
+              f'postów: {user["posts"]}'
+    ).add_to(map)
+    map.save(f'mapka_{user["name"]}.html')
 
 # zwróci mapę z wszystkimi użytkownikami z danej listy (znajomymi)
 
 ### RYSOWANIE MAPY
 
-city= get_coordinates_of(city='Zamość')
-map = folium.Map(
-    location=city,
-    tiles="OpenStreetMap",
-    zoom_start=14,
-    )
+def get_map_of(users: list)->None:
+    map = folium.Map(
+        location=[52.3, 21.0],
+        tiles="OpenStreetMap",
+        zoom_start=14,
+        )
 
-for item in nazwy_miejscowosci:
-    folium.Marker(
-        location=get_coordinates_of(city=item),
-        popup='GEOINFORMATYKA RZĄDZI OU YEEEEEEAAAAH'
-    ).add_to(map)
-map.save('mapka.html')
+    for item in nazwy_miejscowosci:
+        folium.Marker(
+            location=get_coordinates_of(city=user['city']),
+            popup= f'Użytkownik: {user["name"]} \n'
+                   f'Liczba postów {user["posts"]}'
+        ).add_to(map)
+    map.save('mapka.html')
