@@ -2,9 +2,10 @@
 
 import random
 
-import sqlalchemy
-import os
 import sqlalchemy.orm
+from sqlalchemy.orm import sessionmaker
+import os
+import sqlalchemy
 from dotenv import load_dotenv
 from geoalchemy2 import Geometry
 from faker import Faker
